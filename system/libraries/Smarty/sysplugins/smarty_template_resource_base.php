@@ -1,8 +1,4 @@
 <?php
-
-namespace Library;
-
-
 /**
  * Smarty Template Resource Base Object
  *

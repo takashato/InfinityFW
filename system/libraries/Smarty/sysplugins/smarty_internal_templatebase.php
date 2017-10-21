@@ -1,7 +1,4 @@
 <?php
-
-namespace Library;
-
 /**
  * Smarty Internal Plugin Smarty Template  Base
  * This file contains the basic shared methods for template handling

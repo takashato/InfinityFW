@@ -1,6 +1,5 @@
 <?php
 
-namespace Library;
 
 /**
  * Smarty Internal Plugin Template

@@ -1,7 +1,4 @@
 <?php
-
-namespace Library;
-
 /**
  * Smarty Resource Plugin
  *

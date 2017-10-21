@@ -1,6 +1,4 @@
 <?php
-namespace Library;
-
 /**
  * Project:     Smarty: the PHP compiling template engine
  * File:        Smarty.class.php
