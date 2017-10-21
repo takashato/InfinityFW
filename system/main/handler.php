@@ -43,7 +43,7 @@
 
 namespace Handler;
 use \Config\Config;
-use \Library\Smarty;
+use Smarty;
 
 class Handler
 {
@@ -85,6 +85,20 @@ class Handler
     }
 
     /**
+     * Load library
+     * @param string $libraryName
+     * @throws \Library\FWException
+     */
+    protected function loadLibrary($libraryName = ''){
+        if(file_exists(BASEPATH.'/libraries/'.$libraryName.'.php')){
+            // Require library
+            require_once(BASEPATH.'/libraries/'.$libraryName.'.php');
+        } else {
+            throw new \Library\FWException('Can not load library '.$libraryName);
+        }
+    }
+
+    /**
      * Init interface - template engine (Smarty)
      * @return void
      * @throws \Library\FWException
@@ -105,6 +119,8 @@ class Handler
         if(!file_exists(APPPATH.'/interfaces/'.$this->config->interface['template']))
             throw new \Library\FWException("Can't find interface \"{$this->config->interface['template']}\" / template directory.");
         $this->tpl->setTemplateDir(APPPATH.'/interfaces/'.$this->config->interface['template']);
+        // Assign important variables
+        $this->tpl->assign('app', $this->config->application);
     }
 
     /**
@@ -112,6 +128,8 @@ class Handler
      */
     private function initConfig(){
         $this->config = new Config();
+        // Load important configs
+        $this->config->loadConfig("application");
     }
 
 }
