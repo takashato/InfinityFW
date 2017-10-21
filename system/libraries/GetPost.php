@@ -55,6 +55,7 @@ class GetPost
      * Return a raw GET value
      * @param $index
      * @return string / bool
+     * @deprecated
      */
     public function getGetValue($index){
         if(isset($this->getArray[$index])) {
