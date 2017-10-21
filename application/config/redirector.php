@@ -25,3 +25,11 @@ $configVar = 'redirector';
  * Default handler will be called if no handler is indicated.
  */
 $redirector['defaultHandler'] = 'welcome';
+
+/**
+ * "Not Found" Handler
+ *
+ * Set this variable value to the handler you want to be the "not found" handler.
+ * This handler will be called if accessing an unavailable handler.
+ */
+$redirector['notFoundHandler'] = 'welcome';

@@ -83,17 +83,24 @@ if(file_exists(APPPATH.'/config/autoload.php')){
 /* Friendly URL */
 $requestString = $_GET['request'];
 $requestAttr = explode('/', $requestString);
-$handlerName = isset($requestAttr[0]) ? addslashes($requestAttr[0]) : $redirector['defaultHandler'];
-$methodName = $requestAttr[1]; // Temporary
+$handlerName = (isset($requestAttr[0]) && ($requestString != '')) ? addslashes($requestAttr[0]) : $redirector['defaultHandler'];
+$methodName = isset($requestAttr[1]) ? $requestAttr[1] : 'index'; // Temporary
+
+define('REQSTR', $requestString);
 
 /**
  * -------------
  * CALL HANDLER
  * -------------
  */
+
+// Check if handler is not found
+if(!file_exists(APPPATH.'/handlers/'.$handlerName.'.php')) {
+    $handlerName = $redirector['notFoundHandler'];
+}
+
 if(!file_exists(APPPATH.'/handlers/'.$handlerName.'.php')){
-    // TODO
-    die('Handler file "'.$handlerName.'" not found.');
+    die('Handler file "' . $handlerName . '" not found.');
 } else {
     // Require handler file
     require_once(APPPATH . '/handlers/' . $handlerName . '.php');
@@ -122,11 +129,6 @@ if(!file_exists(APPPATH.'/handlers/'.$handlerName.'.php')){
     } else {
         unset($attributes[1]);
     }
-
-
-
-
-    var_dump($attributes);
 
     /**
      * Invoke method
