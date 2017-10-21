@@ -1,0 +1,18 @@
+{extends file="BASE-MAIN.html"}
+{block "content"}
+<h1>Infinity Framework</h1>
+<h3>A micro open-source application development framework for PHP.</h3>
+<div class="description">This is default content of this framework.</br>
+Get rid of this or follow these step to get an overview about InfinityFW.
+</div>
+<a href="./Handlers"><button class="btn-default">Overview &raquo;</button></a>
+<h2>Document</h2>
+<div class="description">
+    <ul>
+        <a href="{$app.url.base}/Handlers"><li>Handlers</li></a>
+        <a href="{$app.url.base}/Handlers/Methods"><li>Handler Methods / Sub-handlers</li></a>
+        <a href="{$app.url.base}/Processors"><li>Processors</li></a>
+        <a href="{$app.url.base}/Libraries"><li>Libraries</li></a>
+    </ul>
+</div>
+{/block}

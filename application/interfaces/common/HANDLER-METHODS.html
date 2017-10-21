@@ -1,0 +1,51 @@
+{extends file="BASE-MAIN.html"}
+{block "content"}
+<h1>Handler Methods</h1>
+<h3>Methods are children of the handler.</h3>
+<h2>How do they work?</h2>
+<div class="description">
+    Let's look the current URL, we're at <span class="inline-code">./{$smarty.const.REQSTR}</span>.<br>
+    That means we invoked the handler <b>Handlers</b>, and its method <b>Methods</b>. Other parts are <b>attributes</b>.<br>
+    <b>Notice:</b> If no method is indicated, or method is not available, the method <b>index</b> will be invoked.<br>
+    If method <b>index</b> is not available, an error will appear.
+</div>
+
+<h2>What are they based on?</h2>
+
+<div class="description">
+    They are also methods of handler class.<br>
+    A handler can contain a lot of methods, but at least have <b>ONE method</b> (index method).<br>
+    They must be <b>public method</b>.
+</div>
+<pre><code class="php code-block">namespace Handler;
+class Example extends Handler{
+    public function index($attr1, $attr2, $attr3,...){
+        // Index method
+    }
+
+    public function Methods($attr1, $attr2, $attr3,...){
+        // Method handler
+    }
+}</code></pre>
+<h2>Wait...!! What are attributes?</h2>
+<div class="description">
+    Let's look this <span class="inline-code">./Handlers/Methods<b>/attr1/attr2/attr3/...</b></span>.<br>
+    <b>attr1, attr2, attr3,...</b> are attribute values. They will be used as <b>arguments</b> of method. And they are unlimited.<br>
+    Suppose we are at <span class="inline-code">./Handlers/Methods/Takashato/Vietnam/Male</span>, and our method is below.
+</div>
+
+<pre><code class="php code-block">
+public function Methods($attr1, $attr2, $attr3){
+    echo 'Name: '.$attr1.'. ';
+    echo 'Nationality: '.$attr2.'. ';
+    echo 'Gender: '.$attr3.'.';
+}</code></pre>
+
+<div class="description">
+    Here we go, we will get the output <span class="inline-code">Name: Takashato. Nationality: Vietnam. Gender: Male.</span>
+</div>
+
+
+<a href="{$app.url.base}"><button class="btn-default">Home</button></a>
+<a href="{$app.url.base}/Processors"><button class="btn-default">Next &raquo;</button></a>
+{/block}

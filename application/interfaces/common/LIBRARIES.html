@@ -1,0 +1,27 @@
+{extends file="BASE-MAIN.html"}
+{block "content"}
+<h1>Libraries</h1>
+<h3>InfinityFW also support default libraries and custom libraries.</h3>
+<h2>How to use?</h2>
+<div class="description">Libraries are classes stored in <span class="inline-link">./system/libraries</span>.
+    A file script can contain many classes.<br>
+    They must be under namespace <span class="inline-link">Library</span>.<br>
+    The following is library GetPost usage in both Handlers and Processors.
+</div>
+
+<pre><code class="php code-block">namespace Handler;
+class HandlerName extends Handler{
+    public function index(){
+        $this->loadLibrary("GetPost");
+        $getPost = new GetPost(); // We store it in a local variable, handler property is also accepted
+        echo $getPost->getPostValue("username");
+    }
+}</code></pre>
+
+<h2>Library List</h2>
+<div class="description">
+    <ul>
+        <a href="{$app.url.base}/Libraries/GetPost"><li>GetPost</li></a>
+    </ul>
+</div>
+{/block}

@@ -36,7 +36,7 @@ $configVar = 'interface';
  */
 
 $interface = array(
-    'debug' => true,
+    'debug' => false,
     'caching' => false,
     'cacheLifetime' => 120,
     'template' => 'common'

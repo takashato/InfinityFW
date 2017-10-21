@@ -19,12 +19,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 namespace Handler;
 class Welcome extends Handler
 {
-    public function index($message = '', $name = ''){
-        $this->loadProcessor('Welcome');
-        echo $this->Welcome->returnEcho().'. Welcome, '.$message.', '.$name;
-    }
-
-    public function welcome($message = '', $name = ''){
-        echo "Chào mừng bạn";
+    public function index(){
+        $this->tpl->display("WELCOME.html");
     }
 }

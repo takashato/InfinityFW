@@ -1,0 +1,50 @@
+{extends file="BASE-MAIN.html"}
+{block "content"}
+<h1>Processors</h1>
+<h3>Processors are "Model" of an application, which perform the processing operation.</h3>
+<h2>How do they work?</h2>
+<div class="description">
+    Processors are classes called inside handler methods.<br>
+    They can be called once and used in all methods of a handler.<br>
+    A processor will be called as a handler's property, <b>property name is the same as with processor name</b>.
+</div>
+
+<div class="description">
+    In handler file script:
+</div>
+
+<pre><code class="php code-block">...
+public function Hello($attr){
+    // Load a processor
+    $this->loadProcessor("ProcessorName");
+    // Use method
+    $this->ProcessorName->method1($attr);
+}
+
+public function Hi(){
+    // Don't need to reload processor
+    // Use method
+    $this->ProcessorName->method2();
+}
+...}</code></pre>
+
+<div class="description">
+    Processors must be stored in <span class="inline-link">./application/processors</span> directory.<br>
+    One PHP script file just contains <b>only ONE processor class</b>, the class name and the file name must be <b>completely the same</b>.<br>
+    Their namespace must be <span class="inline-code">Processor</span>, and extend <span class="inline-code">Processor</span> class.<br>
+</div>
+
+<pre><code class="php code-block">namespace Processor;
+class ProcessorName extends Processor{
+    public function method1(){
+        // Do something
+    }
+
+    public function method2(){
+        // Do something
+    }
+}</code></pre>
+
+<a href="{$app.url.base}"><button class="btn-default">Home</button></a>
+<a href="{$app.url.base}/Libraries"><button class="btn-default">Next &raquo;</button></a>
+{/block}
