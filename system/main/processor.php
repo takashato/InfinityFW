@@ -55,17 +55,14 @@ class Processor
     /**
      * Load library
      * @param string $libraryName
+     * @throws \Library\FWException
      */
     protected function loadLibrary($libraryName = ''){
         if(file_exists(BASEPATH.'/libraries/'.$libraryName.'.php')){
             // Require library
             require_once(BASEPATH.'/libraries/'.$libraryName.'.php');
-            // Check library existence
-            if(class_exists('\Library\\'.$libraryName)){
-                require_once(BASEPATH.'/libraries/'.$libraryName.'.php');
-            } else {
-                die('Can not load processor '.$libraryName.'.');
-            }
+        } else {
+            throw new \Library\FWException('Can not load library '.$libraryName);
         }
     }
 
