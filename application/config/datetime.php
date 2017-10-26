@@ -26,7 +26,7 @@ $configVar = 'datetime';
  * Add a filename as an array element (DO NOT ADD FILE EXTENSION)
  *
  * EXPLANATION OF VARIABLES
- *  ['debug']           Enable debug mode of Smarty
+ *  ['debug']           Enable debug mode of tplengine
  *  ['caching']         Caching render
  *  ['cacheLifetime']   The lifetime of caches
  *  ['template']        The name of sub-category in interfaces. Change this whenever you want

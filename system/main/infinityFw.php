@@ -59,7 +59,8 @@ require_once(BASEPATH.'/main/processor.php');
 
 // Libraries
 require_once(BASEPATH.'/libraries/ErrorException.php');
-require_once(BASEPATH.'/libraries/Smarty/Smarty.class.php');
+require_once(BASEPATH.'/libraries/tplengine/Smarty.class.php');
+require_once(BASEPATH.'/libraries/database/Medoo.php');
 
 
 /**

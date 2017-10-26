@@ -43,13 +43,18 @@
 
 namespace Processor;
 
+use Config\Config;
+use Medoo\Medoo;
+
 class Processor
 {
+    public $config, $db;
+
     /**
      * Processor constructor.
      */
     public function __construct(){
-
+        $this->initConfig();
     }
 
     /**
@@ -66,7 +71,27 @@ class Processor
         }
     }
 
-    protected function loadConfig($configName = ''){
+    /**
+     * Initialize Database
+     * @throws \Library\FWException
+     */
+    protected function initDatabase(){
+        if(empty($this->db)) {
+            // Load config
+            $this->config->loadConfig('database');
+            // Init database
+            $this->db = new Medoo($this->config->dbconfig);
+        } else {
+            throw new \Library\FWException('Database has been initialized already.');
+        }
+    }
 
+    /**
+     * Init config loader
+     */
+    private function initConfig(){
+        $this->config = new Config();
+        // Load important configs
+        $this->config->loadConfig("application");
     }
 }

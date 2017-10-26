@@ -16,7 +16,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @link        N/A
  */
 
-$configVar = 'db';
+$configVar = 'dbconfig';
 
 /**
  * Below is the information of database connections.
@@ -25,24 +25,24 @@ $configVar = 'db';
  * ------------------------
  * EXPLANATION OF VARIABLES
  * ------------------------
- *  ['dsn']         The full DSN string describe a connection to the database.
- *  ['dbdriver']    The database driver.
- *                  Currently supported: mysqli.
- *  ['hostname']    The hostname or IP Address of Database Server.
- *  ['username']    The username used to connect to database.
- *  ['password']    The password used to connect to database.
- *  ['database']    The name of the database you want to connect to.
- *  ['dbprefix']    The prefix of database tables.
- *  ['char_set']    The charset used to communicate with database server.
+ * InfinityFW is using Medoo Framework for Database connection.
+ * Follow this link for documents: https://medoo.in/api/new
  */
 
-$db['default'] = array(
-    'dsn'           => '',
-    'dbDriver'      => 'mysqli',
-    'hostname'      => 'localhost',
-    'username'      => 'root',
-    'password'      => '',
-    'database'      => 'infinityfw',
-    'dbPrefix'      => '',
-    'char_set'      => 'utf8',
+$dbconfig['default'] = array(
+    [
+        // required
+        'database_type' => 'mysql',
+        'database_name' => 'infinityfw',
+        'server' => 'localhost',
+        'username' => 'root',
+        'password' => '',
+
+        // [optional]
+        'charset' => 'utf8',
+        'port' => 3306,
+
+        // [optional] Table prefix
+        'prefix' => '',
+    ]
 );

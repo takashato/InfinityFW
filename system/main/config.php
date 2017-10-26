@@ -46,17 +46,18 @@ namespace Config;
 class Config
 {
     /**
-     * Load config and store as public variable
+     * Load config and store as public variable (reloadable)
      * @param $configName
      * @throws \Library\FWException
      */
-    public function loadConfig($configName){
+    public function loadConfig($configName, $customName = false){
         if(file_exists(APPPATH.'/config/'.$configName.'.php')){
             // Require config
             $configVar = null;
             require_once(APPPATH.'/config/'.$configName.'.php');
             if(isset($$configVar)){
-                $this->{$configVar} = $$configVar;
+                $varName = $customName ? $customName : $configVar;
+                $this->{$varName} = $$configVar;
             } else {
                 throw new \Library\FWException('Config file '.$configName.' does not contain values.');
             }

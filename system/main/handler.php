@@ -99,7 +99,7 @@ class Handler
     }
 
     /**
-     * Init interface - template engine (Smarty)
+     * Init interface - template engine (tplengine)
      * @return void
      * @throws \Library\FWException
      */
@@ -107,9 +107,9 @@ class Handler
         // Load Interface config
         $interface = []; // Trap for IDE
         $this->config->loadConfig('interface');
-        // Load Smarty
+        // Load tplengine
         $this->tpl = new Smarty();
-        // Set Smarty config
+        // Set tplengine config
         $this->tpl->debugging = $this->config->interface['debug'];
         $this->tpl->caching = $this->config->interface['caching'];
         $this->tpl->cache_lifetime = $this->config->interface['cacheLifetime'];
